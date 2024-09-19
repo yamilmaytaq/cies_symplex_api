@@ -8,7 +8,7 @@ import { UsersModule } from 'src/users/users.module';
 @Module({
   imports: [
     TypeOrmModule.forFeature([Feedback]),
-    UsersModule,  // Necesitamos el módulo de usuarios para verificar su existencia
+    UsersModule,
   ],
   controllers: [FeedbackController],
   providers: [FeedbackService],

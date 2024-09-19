@@ -12,6 +12,10 @@ import { MedicationTrackingModule } from './medication-tracking/medication-track
 import { NotificationsModule } from './notifications/notifications.module';
 import { PatientSessionsModule } from './patient-session/patient-session.module';
 import { UserPreferencesModule } from './user-preferences/user-preferences.module';
+import { PatientsModule } from './cies-patients/cies-patients.module';
+import { UsersCiesModule } from './cies-users/cies-users.module';
+import { ServicesCiesModule } from './cies-services/cies-services.module';
+import { TicketCiesModule } from './cies-tickets/cies-tickets.module';
 
 @Module({
   imports: [
@@ -37,6 +41,10 @@ import { UserPreferencesModule } from './user-preferences/user-preferences.modul
     PatientSessionsModule,
     UserPreferencesModule,
     AuthModule,
+    PatientsModule,
+    UsersCiesModule,
+    ServicesCiesModule,
+    TicketCiesModule,
   ],
   controllers: [],
   providers: [],
