@@ -15,7 +15,6 @@ export class MedicationTrackingService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  // Verificar si el usuario existe
   private async verifyUserExists(user_id: number): Promise<User> {
     const user = await this.userRepository.findOne({ where: { user_id } });
     if (!user) {
@@ -24,32 +23,27 @@ export class MedicationTrackingService {
     return user;
   }
 
-  // Crear un registro de medicación
   async create(createMedicationTrackingDto: CreateMedicationTrackingDto) {
     const { user_id, ...medicationData } = createMedicationTrackingDto;
 
-    // Verificar si el usuario existe
     const user = await this.verifyUserExists(user_id);
 
     const newMedication = this.medicationTrackingRepository.create({
       ...medicationData,
-      user,  // Relacionamos el user con el registro de medicación
+      user,
     });
 
     return this.medicationTrackingRepository.save(newMedication);
   }
 
-  // Obtener todos los registros de medicación
   findAll() {
     return this.medicationTrackingRepository.find({ relations: ['user'] });
   }
 
-  // Obtener un registro de medicación por ID
   findOne(id: number) {
     return this.medicationTrackingRepository.findOne({ where: { medication_id: id }, relations: ['user'] });
   }
 
-  // Actualizar un registro de medicación
   async update(id: number, updateMedicationTrackingDto: UpdateMedicationTrackingDto) {
     const { user_id, ...medicationData } = updateMedicationTrackingDto;
 
@@ -58,7 +52,6 @@ export class MedicationTrackingService {
       throw new NotFoundException(`Medication with ID ${id} not found.`);
     }
 
-    // Verificar si el usuario existe (si se proporciona un nuevo user_id)
     if (user_id) {
       const user = await this.verifyUserExists(user_id);
       medication.user = user;
@@ -68,7 +61,6 @@ export class MedicationTrackingService {
     return this.medicationTrackingRepository.save(medication);
   }
 
-  // Eliminar un registro de medicación
   async remove(id: number) {
     const medication = await this.findOne(id);
     if (!medication) {

@@ -15,7 +15,6 @@ export class ActivityLogsService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  // Verificar si el usuario existe
   private async verifyUserExists(user_id: number): Promise<User> {
     const user = await this.userRepository.findOne({ where: { user_id } });
     if (!user) {
@@ -24,32 +23,27 @@ export class ActivityLogsService {
     return user;
   }
 
-  // Crear un registro de actividad
   async create(createActivityLogDto: CreateActivityLogDto) {
     const { user_id, ...activityData } = createActivityLogDto;
 
-    // Verificar si el usuario existe
     const user = await this.verifyUserExists(user_id);
 
     const newActivity = this.activityLogsRepository.create({
       ...activityData,
-      user,  // Relacionamos el user con el registro de actividad
+      user,
     });
 
     return this.activityLogsRepository.save(newActivity);
   }
 
-  // Obtener todos los registros de actividad
   findAll() {
     return this.activityLogsRepository.find({ relations: ['user'] });
   }
 
-  // Obtener un registro de actividad por ID
   findOne(id: number) {
     return this.activityLogsRepository.findOne({ where: { activity_id: id }, relations: ['user'] });
   }
 
-  // Actualizar un registro de actividad
   async update(id: number, updateActivityLogDto: UpdateActivityLogDto) {
     const { user_id, ...activityData } = updateActivityLogDto;
 
@@ -58,7 +52,6 @@ export class ActivityLogsService {
       throw new NotFoundException(`Activity with ID ${id} not found.`);
     }
 
-    // Verificar si el usuario existe (si se proporciona un nuevo user_id)
     if (user_id) {
       const user = await this.verifyUserExists(user_id);
       activity.user = user;
@@ -68,7 +61,6 @@ export class ActivityLogsService {
     return this.activityLogsRepository.save(activity);
   }
 
-  // Eliminar un registro de actividad
   async remove(id: number) {
     const activity = await this.findOne(id);
     if (!activity) {

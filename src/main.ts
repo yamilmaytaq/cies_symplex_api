@@ -18,6 +18,8 @@ async function bootstrap() {
     }),
   );
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('API CIES Symplex')
     .setDescription('Documentación de la API para la gestión de cies symplex')

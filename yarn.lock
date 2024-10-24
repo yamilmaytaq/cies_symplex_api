@@ -1838,6 +1838,7 @@ ci-info@^3.2.0:
   version "0.0.1"
   resolved "file:"
   dependencies:
+    "@nestjs/axios" "^3.0.3"
     "@nestjs/common" "^10.0.0"
     "@nestjs/config" "3.2.3"
     "@nestjs/core" "^10.0.0"
@@ -1846,6 +1847,7 @@ ci-info@^3.2.0:
     "@nestjs/platform-express" "^10.0.0"
     "@nestjs/swagger" "^7.4.0"
     "@nestjs/typeorm" "10.0.0"
+    axios "^1.7.7"
     bcryptjs "2.4.3"
     cies-symplex-api "file:"
     class-transformer "0.5.1"
@@ -2722,6 +2724,11 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
+
+fsevents@^2.3.2, fsevents@~2.3.2:
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
   version "1.1.1"
