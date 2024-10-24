@@ -16,6 +16,7 @@ import { PatientsModule } from './cies-patients/cies-patients.module';
 import { UsersCiesModule } from './cies-users/cies-users.module';
 import { ServicesCiesModule } from './cies-services/cies-services.module';
 import { TicketCiesModule } from './cies-tickets/cies-tickets.module';
+import { DiagnosticModule } from './diagnostic/diagnostic.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { TicketCiesModule } from './cies-tickets/cies-tickets.module';
     UsersCiesModule,
     ServicesCiesModule,
     TicketCiesModule,
+    DiagnosticModule
   ],
   controllers: [],
   providers: [],
